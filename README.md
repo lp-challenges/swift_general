@@ -46,3 +46,11 @@ With optionals, Swift is able to detect problems such as this at compile time an
 If we expect a variable or object to always contain a value prior to using it, we will declare the variable as a non-optional.
 * Optional binding is the recommended way to unwrap an optional.
 * Optional chaining allows us to call properties, methods, and subscripts on an optional that might be nil.
+
+## Collections
+Multiple items into a single unit. The data stored in a Swift collection must be of the same type
+* Arrays: tore data in an ordered collection
+* Dictionaries: unordered collections of key-value pairs
+* Sets: unordered collections of unique values
+
+
