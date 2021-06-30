@@ -27,3 +27,22 @@ case .Puzzle(let price, let pieces):
     print("World Puzzle is a puzzle with \(pieces) and sells for \(price)")
 }
 ```
+##Optionals
+Optionals are a special type in Swift. 
+``` 
+var myString1: String?
+var myString2: Optional<String>
+```
+The optional type is an enumeration with two possible values, None and Some(T) where T is the generic associated value of the appropriate type.
+Internally, an optional is defined as follows:
+```
+enum Optional<T> {
+    case None    
+    case Some(T)
+}
+```
+When we forget to initialize an object or set a value for a variable, we can get unexpected results at runtime with Objective-c.
+With optionals, Swift is able to detect problems such as this at compile time and alert us before it becomes a runtime issue.
+If we expect a variable or object to always contain a value prior to using it, we will declare the variable as a non-optional.
+* Optional binding is the recommended way to unwrap an optional.
+* Optional chaining allows us to call properties, methods, and subscripts on an optional that might be nil.
