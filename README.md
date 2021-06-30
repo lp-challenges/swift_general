@@ -53,4 +53,21 @@ Multiple items into a single unit. The data stored in a Swift collection must be
 * Dictionaries: unordered collections of key-value pairs
 * Sets: unordered collections of unique values
 
+## Variadic parameters
+A variadic parameter is one that accepts zero or more values of a specified type.
+```
+func sayHello(greeting: String, names: String...) {
+    for name in names {
+        print("\(greeting) \(name)")
+    }
+}
+```
 
+## inout parameters
+If we want to change the value of a parameter and we want those changes to persist once the function ends, we need to define the parameter as an inout parameter.
+```
+func reverse(first: inout String, second: inout String) {
+    let tmp = first
+    first = second
+second = tmp }
+```
