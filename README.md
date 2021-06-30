@@ -27,7 +27,7 @@ case .Puzzle(let price, let pieces):
     print("World Puzzle is a puzzle with \(pieces) and sells for \(price)")
 }
 ```
-##Optionals
+## Optionals
 Optionals are a special type in Swift. 
 ``` 
 var myString1: String?
