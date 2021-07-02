@@ -97,4 +97,68 @@ let employeeCollection = [employee1, employee2, employee3]
 
 employeeCollection.map(\.firstName)
 ```
+## Polymorphism
+Polymorphism is a single interface to multiple types, gives us the ability to interact with multiple types in a uniform manner.
 
+## Protocol-Oriented Design
+* protocol inheritance:  is where one protocol can inherit the requirements from one or more additional protocols. This is similar to class inheritance in OOP, but insteadof inheriting functionality, we are inheriting requirements. We can also inherit requirements from multiple protocols, whereas a class in Swift can have only one superclass. 
+* protocol composition: allows types to conform to more than one protocol. This is one of the many advantages that protocol-oriented design has over object-oriented design. With object-oriented design, a class can have only one superclass. This
+can lead to very large, monolithic superclasses. Having a single type that conforms to multiple protocols is called protocol composition
+* protocol extensions: allow to provide method and property implementations to conforming types. They also allow us to provide common implementations to all the conforming types, eliminating the need to provide an implementation in each individual type or the need to create a class hierarchy
+
+### where statement
+```
+for (index, animal) in animals.enumerated() where animal is SeaAnimal {
+    print("Only Sea Animal: \(index)")
+}
+```
+To me, the code base in a project that uses protocol-oriented design is much safer, easier to read, and easier to maintain.
+
+## Generics
+Generics allow us to write very flexible and reusable code that avoids duplication. With a type-safe language, such as Swift, we often need to write functions, classes, and structures that are valid for multiple types. Without generics, we need to write separate functions for each type we wish to support; however, with generics, we can write one generic function to provide the functionality for multiple types.
+
+### Conditionally adding extensions with generics
+```
+extension List where T: Numeric {
+    func sum () -> T {
+       items.reduce (0, +)
+    }
+}
+```
+
+### Conditionally adding functions
+```
+extension List {
+    func sum () -> T where T: Numeric {
+       items.reduce (0, +)
+    }
+}
+```
+### Conditional conformance
+```
+extension List: Equatable where T: Equatable {
+    static func ==(l1:List, l2:List) -> Bool {
+        if l1.items.count != l2.items.count {
+            return false
+        }
+        for (e1, e2) in zip(l1.items, l2.items) {
+            if e1 != e2 {
+                return false
+} }
+return true }
+}
+```
+
+### Generic subscripts
+```
+subscript<T: Hashable>(item: T) -> Int {
+    return item.hashValue
+}
+
+subscript<T>(key: String) -> T? {
+    return dictionary[key] as? T
+}
+```
+
+### Associated types
+An associated type declares a placeholder name that can be used instead of a type within a protocol. The actual type to be used is not specified until the protocol is adopted.
