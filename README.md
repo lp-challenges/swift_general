@@ -71,3 +71,30 @@ func reverse(first: inout String, second: inout String) {
     first = second
 second = tmp }
 ```
+
+
+## Classes vs. Structures
+* Type: A structure is a value type, while a class is a reference type
+* Inheritance: A structure cannot inherit from other types, while a class can
+* Deinitializers: Structures cannot have custom deinitializers, while a class can
+
+*Structures are value types. When we pass instances of a structure within our application, we pass a copy of the structure and not the original structure. Classes are reference types; therefore, when we pass an instance of a class within our application, a reference to the original instance is passed. The functions can change the STRUCUTRE without affecting the original instance of the structure.*
+
+## Access controls
+Access controls enable us to hide implementation details and only expose the interfaces we want to expose. We can also assign specific access levels to properties, methods, and initializers 
+* Open: Accessible from any module that imports the module they are defined in. Can be inherited and overridden out of the module.
+* Public: Accessible from any module that imports the module they are defined in. Can be inherited and overridden **ONLY INSIDE** the module.
+* Internal: It is the default. Can be used inside the module.
+* Fileprivate: Allow access only within the same source file.
+* Private: Only inside the class and its extension.
+
+## Key-path expressions as functions (swift 5.2)
+```
+let employee1 = EmployeeStruct(firstName: "Jon", lastName: "Hoffman", salaryYear: 90000)
+let employee2 = EmployeeStruct(firstName: "Kailey", lastName: "Hoffman", salaryYear: 32000)
+let employee3 = EmployeeStruct(firstName: "Kara", lastName: "Hoffman", salaryYear: 28000)
+let employeeCollection = [employee1, employee2, employee3]
+
+employeeCollection.map(\.firstName)
+```
+
