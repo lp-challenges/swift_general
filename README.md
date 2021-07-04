@@ -162,3 +162,6 @@ subscript<T>(key: String) -> T? {
 
 ### Associated types
 An associated type declares a placeholder name that can be used instead of a type within a protocol. The actual type to be used is not specified until the protocol is adopted.
+
+## Closures
+Closures are self-contained blocks of code that can be passed around and used throughout our application
