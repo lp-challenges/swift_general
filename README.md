@@ -164,4 +164,27 @@ subscript<T>(key: String) -> T? {
 An associated type declares a placeholder name that can be used instead of a type within a protocol. The actual type to be used is not specified until the protocol is adopted.
 
 ## Closures
-Closures are self-contained blocks of code that can be passed around and used throughout our application
+Closures are blocks of code that can be passed around and used throughout our application.
+A closure is a strong reference by default in ARC.
+
+## Memory Management
+### value types
+when we pass an instance of a structure within our application, such as a parameter of a method, we create a new instance
+of the structure in the memory. This new instance of the structure is only valid while the application is in the scope where the structure was created. Once the structure goes out of scope, the new instance of the structure is automatically destroyed, and the memory is released. This makes the memory management of structures very easy and painless. 
+
+### reference types
+Classes, are reference types. This means that we allocate memory for the instance of the class only once, which is when it is initially created. When we pass an instance of the class within our application, either as a function argument or by assigning it to a variable, we are really passing a reference to where the instance is stored in memory. Since the instance of a class may be referenced in multiple scopes (unlike a structure), it cannot be automatically destroyed, and memory is not released when it goes out of scope because it may be referenced in another scope. Therefore, Swift needs some form of memory management to track and release the memory used by instances of classes when the class is no longer needed. 
+
+
+### arc counts
+* With ARC, for the most part, memory management in Swift simply works. ARC will automatically track the references to instances of classes, and when an instance is no longer needed (when there are no references pointing to it), ARC will automatically destroy the instance and release the memory.
+* ARC counts how many times the instance is referenced; that is, how many active properties, variables, or constants are pointing to the instance of the class. Once the reference count for an instance of a class equals zero (that is, nothing is referencing the instance), the memory is marked for release.
+
+### memory leak 
+when memory is reserved for instances that are no longer needed.
+
+### Strong reference cycles
+The instances of two classes hold a strong reference to each other, preventing ARC from releasing either instance.
+
+### Unowned and Weak references
+The difference between a weak reference and an unowned reference is that the instance that a weak reference refers to can be nil, whereas the instance that an unowned reference is referring to cannot be nil. This means that when we use a weak reference, the property must be an optional property.
