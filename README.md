@@ -207,13 +207,13 @@ for i in 1...10 {
     print("\(i) is odd")
 }
 ```
-```
+`
 1 is odd
 3 is odd
 5 is odd
 7 is odd
 9 is odd
-```
+`
 ## The break statement
 #### The break statement immediately ends the execution of a code block within the control flow. 
 ```
