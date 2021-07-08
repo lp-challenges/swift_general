@@ -193,3 +193,35 @@ The instances of two classes hold a strong reference to each other, preventing A
 
 ### Unowned and Weak references
 The difference between a weak reference and an unowned reference is that the instance that a weak reference refers to can be nil, whereas the instance that an unowned reference is referring to cannot be nil. This means that when we use a weak reference, the property must be an optional property.
+The difference between a weak reference and an unowned reference is that the instance that a weak reference refers to can be nil, whereas the instance that an unowned reference is referring to cannot be nil. This means that when we use a weak reference, the property must be an optional property.
+
+
+# Control flow
+## The continue statement
+#### The continue statement tells a loop to stop executing the code block and to go to the next iteration of the loop
+```
+for i in 1...10 {
+    if i % 2 == 0 {
+        continue
+    }
+    print("\(i) is odd")
+}
+```
+```
+1 is odd
+3 is odd
+5 is odd
+7 is odd
+9 is odd
+```
+## The break statement
+#### The break statement immediately ends the execution of a code block within the control flow. 
+```
+for i in 1...10 {
+    if i % 2 == 0 {
+        break
+    }
+    print("\(i) is odd")
+}
+```
+`1 is odd`
