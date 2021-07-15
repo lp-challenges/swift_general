@@ -193,8 +193,6 @@ The instances of two classes hold a strong reference to each other, preventing A
 
 ### Unowned and Weak references
 The difference between a weak reference and an unowned reference is that the instance that a weak reference refers to can be nil, whereas the instance that an unowned reference is referring to cannot be nil. This means that when we use a weak reference, the property must be an optional property.
-The difference between a weak reference and an unowned reference is that the instance that a weak reference refers to can be nil, whereas the instance that an unowned reference is referring to cannot be nil. This means that when we use a weak reference, the property must be an optional property.
-
 
 # Control flow
 ## The continue statement
