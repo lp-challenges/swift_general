@@ -49,7 +49,7 @@ If we expect a variable or object to always contain a value prior to using it, w
 
 ## Collections
 Multiple items into a single unit. The data stored in a Swift collection must be of the same type
-* Arrays: tore data in an ordered collection
+* Arrays: store data in an ordered collection
 * Dictionaries: unordered collections of key-value pairs
 * Sets: unordered collections of unique values
 
