@@ -162,6 +162,58 @@ subscript<T>(key: String) -> T? {
 
 ### Associated types
 An associated type declares a placeholder name that can be used instead of a type within a protocol. The actual type to be used is not specified until the protocol is adopted.
+#### Associated types vs. Generics
+A protocol is an abstract set of requirements — a checklist that a concrete type must fulfill in order to say it conforms to the protocol. Traditionally one thinks of that checklist of being behaviors: methods or properties implemented by the concrete type. Associated types are a way of naming the things that are involved in such a checklist, and thereby expanding the definition while keeping it open-ended as to how a conforming type implements conformance.
+
+When you see:
+```
+protocol SimpleSetType {
+    associatedtype Element
+    func insert(_ element: Element)
+    func contains(_ element: Element) -> Bool
+    // ...
+}
+```
+What that means is that, for a type to claim conformance to SimpleSetType, not only must that type contain insert(_:) and contains(_:) functions, those two functions must take the same type of parameter as each other. But it doesn't matter what the type of that parameter is.
+
+You can implement this protocol with a generic or non-generic type:
+
+```
+class BagOfBytes: SimpleSetType {
+    func insert(_ byte: UInt8) { /*...*/ }
+    func contains(_ byte: UInt8) -> Bool { /*...*/ }
+}
+
+struct SetOfEquatables<T: Equatable>: SimpleSetType {
+    func insert(_ item: T) { /*...*/ }
+    func contains(_ item: T) -> Bool { /*...*/ }
+}
+```
+Notice that nowhere does BagOfBytes or SetOfEquatables define the connection between SimpleSetType.Element and the type used as the parameter for their two methods — the compiler automagically works out that those types are associated with the right methods, so they meet the protocol's requirement for an associated type.
+
+On Generic Type Parameters
+Where associated types expand your vocabulary for creating abstract checklists, generic type parameters restrict the implementation of a concrete type. When you have a generic class like this:
+
+class ViewController<V: View> {
+    var view: V
+}
+It doesn't say that there are lots of different ways to make a ViewController (as long as you have a view), it says a ViewController is a real, concrete thing, and it has a view. And furthermore, we don't know exactly what kind of view any given ViewController instance has, but we do know that it must be a View (either a subclass of the View class, or a type implementing the View protocol... we don't say).
+
+Or to put it another way, writing a generic type or function is sort of a shortcut for writing actual code. Take this example:
+```
+func allEqual<T: Equatable>(a: T, b: T, c: T) {
+    return a == b && b == c
+}
+```
+This has the same effect as if you went through all the Equatable types and wrote:
+
+func allEqual(a: Int, b: Int, c: Int) { return a == b && b == c }
+func allEqual(a: String, b: String, c: String) { return a == b && b == c }
+func allEqual(a: Samophlange, b: Samophlange, c: Samophlange) { return a == b && b == c }
+As you can see, we're creating code here, implementing new behavior — much unlike with protocol associated types where we're only describing the requirements for something else to fulfill.
+
+#### Conclusion
+Associated types and generic type parameters are very different kinds of tools: associated types are a language of description, and generics are a language of implementation. They have very different purposes, even though their uses sometimes look similar (especially when it comes to subtle-at-first-glance differences like that between an abstract blueprint for collections of any element type, and an actual collection type that can still have any generic element). Because they're very different beasts, they have different syntax.
 
 ## Closures
 Closures are blocks of code that can be passed around and used throughout our application. <br>
