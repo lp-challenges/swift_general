@@ -282,3 +282,7 @@ NSOperationQueue can be more suitable for long-running operations that may need 
 *  Prefer GCD where task is not much complex and optimum CPU performance is required.
 *  Prefer NSOperationQueue where task is complex and requires canceling or suspending a block and dependency management.
 
+GCD is a lightweight way to represent units of work that are going to be executed concurrently. You don’t schedule these units of work; the system takes care of scheduling for you. Adding dependency among blocks can be a headache. Canceling or suspending a block creates extra work for you as a developer!
+
+NSOperation and NSOperationQueue add a little extra overhead compared to GCD, but you can add dependency among various operations. You can re-use operations, cancel or suspend them. NSOperation is compatible with Key-Value Observation (KVO); for example, you can have an NSOperation start running by listening to NSNotificationCenter.
+
