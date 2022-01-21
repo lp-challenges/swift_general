@@ -274,15 +274,5 @@ for i in 1...10 {
 ```
 `1 is odd`
 
-## DispatchQueue vs. NSOperationQueue
-NSOperationQueue can be more suitable for long-running operations that may need to be cancelled or have complex dependencies. GCD dispatch queues are better for short tasks that should have minimum performance and memory overhead.
-* OperationQueue internally uses Grand Central Dispatch and on iOS.
-*  You can define dependencies between individual operations for example, which isn't possible with plain GCD queues
-*  It is also possible to cancel operations that have been enqueued in an OperationQueue
-*  Prefer GCD where task is not much complex and optimum CPU performance is required.
-*  Prefer NSOperationQueue where task is complex and requires canceling or suspending a block and dependency management.
-
-GCD is a lightweight way to represent units of work that are going to be executed concurrently. You don’t schedule these units of work; the system takes care of scheduling for you. Adding dependency among blocks can be a headache. Canceling or suspending a block creates extra work for you as a developer!
-
-NSOperation and NSOperationQueue add a little extra overhead compared to GCD, but you can add dependency among various operations. You can re-use operations, cancel or suspend them. NSOperation is compatible with Key-Value Observation (KVO); for example, you can have an NSOperation start running by listening to NSNotificationCenter.
-
+## GCD, DispatchQueue and NSOperationQueue
+ [Repository LINK](https://github.com/lp-challenges/grand_central_dispatch/blob/main/README.md)
