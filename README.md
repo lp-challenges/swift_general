@@ -108,11 +108,20 @@ can lead to very large, monolithic superclasses. Having a single type that confo
 * protocol extensions: allow to provide method and property implementations to conforming types. They also allow us to provide common implementations to all the conforming types, eliminating the need to provide an implementation in each individual type or the need to create a class hierarchy
 
 ### where statement
+Is used to filter things, like a conditional. <br>
+It is always filtering something: `Get me all of X where X.x = y` <br>
+Provides a constraint of the data type you want to work with. <br>
+It is flexible and can be used in unrelated places:
+* Iterations
 ```
-for (index, animal) in animals.enumerated() where animal is SeaAnimal {
+for animal in animals where animal is SeaAnimal {
     print("Only Sea Animal: \(index)")
 }
 ```
+* Extensions
+* Generics
+
+
 To me, the code base in a project that uses protocol-oriented design is much safer, easier to read, and easier to maintain.
 
 ## Generics
