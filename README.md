@@ -98,7 +98,8 @@ let employeeCollection = [employee1, employee2, employee3]
 employeeCollection.map(\.firstName)
 ```
 ## Polymorphism
-Polymorphism is a single interface to multiple types, gives us the ability to interact with multiple types in a uniform manner.
+Polymorphism is a single interface to multiple types.<br>
+Ability to interact with multiple types in a uniform manner.
 
 ## Protocol-Oriented Design
 * protocol inheritance:  is where one protocol can inherit the requirements from one or more additional protocols. This is similar to class inheritance in OOP, but insteadof inheriting functionality, we are inheriting requirements. We can also inherit requirements from multiple protocols, whereas a class in Swift can have only one superclass. 
