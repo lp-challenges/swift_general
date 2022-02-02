@@ -44,8 +44,8 @@ enum Optional<T> {
 When we forget to initialize an object or set a value for a variable, we can get unexpected results at runtime with Objective-c.
 With optionals, Swift is able to detect problems such as this at compile time and alert us before it becomes a runtime issue.
 If we expect a variable or object to always contain a value prior to using it, we will declare the variable as a non-optional.
-* Optional binding: to find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable. Can be used with if and while statements to check for a value and to extract that value into a constant or variable.
-* Optional chaining: is a process for querying and calling properties, methods, and subscripts on an optional that might currently be nil. If the optional contains a value, the property, method, or subscript call succeeds; if the optional is nil, the property, method, or subscript call returns nil. Multiple queries can be chained together, and the entire chain fails gracefully if any link in the chain is nil.
+* **Optional binding**: to find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable. Can be used with if and while statements to check for a value and to extract that value into a constant or variable.
+* **Optional chaining**: is a process for querying and calling properties, methods, and subscripts on an optional that might currently be nil. If the optional contains a value, the property, method, or subscript call succeeds; if the optional is nil, the property, method, or subscript call returns nil. Multiple queries can be chained together, and the entire chain fails gracefully if any link in the chain is nil.
 
 ## Collections
 Multiple items into a single unit. The data stored in a Swift collection must be of the same type
