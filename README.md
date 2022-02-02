@@ -4,6 +4,7 @@
 * Tuples: group multiple values into a single compound type. These values are not required to be of the same type.
 * Enumerations: data type that enables us to group related types together and use them in a type-safe manner. Enumerations are not tied to integer values. Enumerations can also have associated values. Associated values allow us to store additional information, along with member values. This additional information can vary each time we use the member. It can also be of any type, and the types can be different for each member.
 ```
+
 enum Product {
     case Book(Double, Int, Int)
     case Puzzle(Double, Int)
@@ -119,6 +120,10 @@ for animal in animals where animal is SeaAnimal {
 }
 ```
 * Extensions
+```
+extension Animal where Self is SeaAnimal
+extension Animal 
+```
 * Generics
 
 
