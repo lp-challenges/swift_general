@@ -78,7 +78,7 @@ second = tmp }
 * Inheritance: A structure cannot inherit from other types, while a class can
 * Deinitializers: Structures cannot have custom deinitializers, while a class can
 
-*Structures are value types. When we pass instances of a structure within our application, we pass a copy of the structure and not the original structure. Classes are reference types; therefore, when we pass an instance of a class within our application, a reference to the original instance is passed. The functions can change the STRUCUTRE without affecting the original instance of the structure.*
+*Structures are value types. When we pass instances of a structure within our application, we pass a copy of the structure and not the original structure. Classes are reference types; therefore, when we pass an instance of a class within our application, a reference to the original instance is passed.
 
 ## Access controls
 Access controls enable us to hide implementation details and only expose the interfaces we want to expose. We can also assign specific access levels to properties, methods, and initializers 
