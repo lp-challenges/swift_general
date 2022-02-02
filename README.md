@@ -81,12 +81,12 @@ second = tmp }
 *Structures are value types. When we pass instances of a structure within our application, we pass a copy of the structure and not the original structure. Classes are reference types; therefore, when we pass an instance of a class within our application, a reference to the original instance is passed.
 
 ## Access controls
-Access controls enable us to hide implementation details and only expose the interfaces we want to expose. We can also assign specific access levels to properties, methods, and initializers 
-* Open: Accessible from any module that imports the module they are defined in. Can be inherited and overridden out of the module.
-* Public: Accessible from any module that imports the module they are defined in. Can be inherited and overridden **ONLY INSIDE** the module.
+Access controls enable us to hide implementation details and expose the interfaces. We can assign specific access levels to properties, methods, and initializers 
+* Open: Accessible from any import. Can be inherited and overridden out of the module.
+* Public: Accessible from any import. Can be inherited and overridden **ONLY INSIDE** the module.
 * Internal: It is the default. Can be used inside the module.
 * Fileprivate: Allow access only within the same source file.
-* Private: Only inside the class and its extension.
+* Private: Only inside the class and extension.
 
 ## Key-path expressions as functions (swift 5.2)
 ```
