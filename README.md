@@ -125,8 +125,8 @@ for name in names where name.hasPrefix("Shubham") {
 ```
 * Extensions
 ```
-extension Animal where Self is SeaAnimal
-extension Array where Element : Comparable
+extension Animal where Self is SeaAnimal //object comparison
+extension Array where Element : Comparable //protocol conformance
 ```
 * Generics
 ```
@@ -180,9 +180,15 @@ Generics allow us to write very flexible and reusable code that avoids duplicati
 
 ### Conditionally adding extensions with generics
 ```
-extension List where T: Numeric {
+extension List where T: Numeric { //protocol conformace
     func sum () -> T {
        items.reduce (0, +)
+    }
+}
+
+extension List where T == String {
+    func addPrefix() {
+        print("Warning! \(self.element)")
     }
 }
 ```
