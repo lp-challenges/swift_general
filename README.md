@@ -341,5 +341,37 @@ for i in 1...10 {
 ```
 `1 is odd`
 
-## GCD, DispatchQueue and NSOperationQueue
- [Repository LINK](https://github.com/lp-challenges/grand_central_dispatch/blob/main/README.md)
+## Subscript
+A subscript defines a shortcut to elements of a collection, or sequence. It can be defined in classes, structures, and enumerations to allow quick access to elements from a certain type. <br>
+For example, access elements from an array or dictionary, can also be used to add new values.
+
+### Creating a custom subscript
+```
+final class ImageCache {
+    static let shared = ImageCache()
+
+    private var imageStore: [URL: UIImage] = [:]
+}
+
+extension ImageCache {
+    subscript(url: URL) -> UIImage? {
+        get {
+            imageStore[url]
+        }
+        set {
+            imageStore[url] = newValue
+        }
+    }
+}
+
+let avatarImage = UIImage(named: "avatar.jpg")!
+let avatarURL = URL(string: "https://www.avanderlee.com/avatar.png")!
+
+ImageCache.shared[avatarURL] = avatarImage
+```
+
+
+## Collection Vs. Sequence
+* A **Sequence** represent a series of values. Sequence is a type that can be iterated with a for...in loop.
+* **Collection** is a SequenceType that can be accessed via subscript and defines a startIndex and endIndex. Collection is a step beyond a sequence; individual elements of a collection can be accessed multiple times.
+
