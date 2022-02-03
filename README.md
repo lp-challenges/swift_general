@@ -113,19 +113,65 @@ Is used to filter things, like a conditional. <br>
 It is always filtering something: `Get me all of X where X.x = y` <br>
 Provides a constraint of the data type you want to work with. <br>
 It is flexible and can be used in unrelated places:
-* Iterations
+* Iterations  
 ```
 for animal in animals where animal is SeaAnimal {
     print("Only Sea Animal: \(index)")
+}
+
+for name in names where name.hasPrefix("Shubham") {
+    print(name)
 }
 ```
 * Extensions
 ```
 extension Animal where Self is SeaAnimal
-extension Animal 
+extension Array where Element : Idable
 ```
 * Generics
+```
+func genericFunction<S where S: StringLiteralConvertible>(string: S){
+    print(string)
+}
+```
+* Conditionals
+```
+while let arr = mutableArray where arr.count < 5 {
+    mutableArray?.append(0) // [0,0,0,0,0]
+}
 
+if let str = string where str == "checkmate" {
+    print("game over") // match
+} else {
+    print("let's play")
+}
+
+guard let str = string where str != "checkmate" else {
+    fatalError("game over") // match
+}
+
+var value = (1,2)
+switch value {
+    case let (x, y) where x == 1:
+        // match 1
+    break
+    case let (x, y) where x / 5 == 1:
+        // not-match
+    break
+    default:
+    break
+}
+```
+* Do Catch
+```
+do {
+    try errorProne()
+} catch ResponseError.HTTP(let code) where code >= 400 && code % 2 == 0 {
+    print("Bad Request") // match
+} catch ResponseError.HTTP(let code) where code >= 500 && code < 600  {
+    print("Internal Server Error")
+}
+```
 
 To me, the code base in a project that uses protocol-oriented design is much safer, easier to read, and easier to maintain.
 
