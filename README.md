@@ -126,7 +126,7 @@ for name in names where name.hasPrefix("Shubham") {
 * Extensions
 ```
 extension Animal where Self is SeaAnimal
-extension Array where Element : Idable
+extension Array where Element : Comparable
 ```
 * Generics
 ```
