@@ -264,7 +264,7 @@ Associated types and generic type parameters are very different kinds of tools: 
 Closures are blocks of code that can be passed around and used throughout our application. <br>
 A closure is a strong reference by default in ARC.
 * **non-escaping closure:**  When you are passing a closure as the function argument, the closure gets execute with the function’s body and returns the compiler back. As the execution ends, the passed closure goes out of scope and have no more existence in memory.
-* **escaping closure:** when the closure is passed as an argument to the function, but is called after the function returns. It is retaines on memory until gets finished. 
+* **escaping closure:** when the closure is passed as an argument to the function, but is executed in another context. It is retained on memory until gets finished. 
     * Variables of function type are implicit escaping
     * typealiases are implicit escaping
     * Optional closures are implicit escaping   
