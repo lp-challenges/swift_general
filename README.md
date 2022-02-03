@@ -73,14 +73,6 @@ func reverse(first: inout String, second: inout String) {
 second = tmp }
 ```
 
-
-## Classes vs. Structures
-* Type: A structure is a value type, while a class is a reference type
-* Inheritance: A structure cannot inherit from other types, while a class can
-* Deinitializers: Structures cannot have custom deinitializers, while a class can
-
-*Structures are value types. When we pass instances of a structure within our application, we pass a copy of the structure and not the original structure. Classes are reference types; therefore, when we pass an instance of a class within our application, a reference to the original instance is passed.
-
 ## Access controls
 Access controls enable us to hide implementation details and expose the interfaces. We can assign specific access levels to properties, methods, and initializers 
 * Open: Accessible from any import. Can be inherited and overridden out of the module.
@@ -270,6 +262,15 @@ A closure is a strong reference by default in ARC.
     * Optional closures are implicit escaping   
 
 ## Memory Management
+
+### Classes vs. Structures
+* Type: A structure is a value type, while a class is a reference type
+* Inheritance: A structure cannot inherit from other types, while a class can
+* Deinitializers: Structures cannot have custom deinitializers, while a class can
+
+*Structures are value types. When we pass instances of a structure within our application, we pass a copy of the structure and not the original structure. Classes are reference types; therefore, when we pass an instance of a class within our application, a reference to the original instance is passed.
+
+
 ### value types
 when we pass an instance of a structure within our application, such as a parameter of a method, we create a new instance
 of the structure in the memory. This new instance of the structure is only valid while the application is in the scope where the structure was created. Once the structure goes out of scope, the new instance of the structure is automatically destroyed, and the memory is released. This makes the memory management of structures very easy and painless. 
