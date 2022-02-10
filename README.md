@@ -1,10 +1,12 @@
-# swift_general
 * Type_Safety:  we are required to define the types of the values we are going to store in a variable. We will get an error if we attempt to assign a value to a variable that is of the wrong type
 * Type_Inference: allows us to omit the variable type when the variable is defined with an initial value. The compiler will infer the type based on that initial value. 
 * Tuples: group multiple values into a single compound type. These values are not required to be of the same type.
 * Enumerations: data type that enables us to group related types together and use them in a type-safe manner. Enumerations are not tied to integer values. Enumerations can also have associated values. Associated values allow us to store additional information, along with member values. This additional information can vary each time we use the member. It can also be of any type, and the types can be different for each member.
-```
 
+## Copy on write
+To talk about copy on write we need to understand the value semantic (copy a STRUCT  n we pass the value)
+
+```
 enum Product {
     case Book(Double, Int, Int)
     case Puzzle(Double, Int)
