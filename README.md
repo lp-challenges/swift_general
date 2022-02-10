@@ -74,6 +74,8 @@ print(address: array2)
 //0x600000078de0 array2 address before mutation
 //0x6000000aa100 array2 address after mutation
 ```
+Created the array1 and assigned to array2, because of the copy-on-write, both values will point to the same address on memory, it will NOT be a copy. <br>
+The array2 will only be a copy when we mutate it.
 
 ## Collections
 Multiple items into a single unit. The data stored in a Swift collection must be of the same type
