@@ -3,9 +3,6 @@
 * Tuples: group multiple values into a single compound type. These values are not required to be of the same type.
 * Enumerations: data type that enables us to group related types together and use them in a type-safe manner. Enumerations are not tied to integer values. Enumerations can also have associated values. Associated values allow us to store additional information, along with member values. This additional information can vary each time we use the member. It can also be of any type, and the types can be different for each member.
 
-## Copy on write
-To talk about copy on write we need to understand the value semantic (copy a STRUCT  n we pass the value)
-
 ```
 enum Product {
     case Book(Double, Int, Int)
@@ -49,6 +46,34 @@ With optionals, Swift is able to detect problems such as this at compile time an
 If we expect a variable or object to always contain a value prior to using it, we will declare the variable as a non-optional.
 * **Optional binding**: to find out whether an optional contains a value, and if so, to make that value available as temporary. Can be used with if and while statements to check and extract some value.
 * **Optional chaining**: is a process for querying and calling properties, methods, and subscripts that could be nil. If the optional contains a value,the call succeeds; if the optional is nil, the call returns nil. Multiple queries can be chained together, the entire chain fails if any link in the chain is nil.
+
+## Copy on write
+To talk about copy on write we need to understand the value semantic (copy a STRUCT when we pass the value). <br>
+When you have large value type and have to assign or pass a parameter to a function copying it can be really expensive.<br>
+Trying to minimize this issue, swift implements this set of mechanisms for some value types like an Array, where the value will be copied only on mutation. If the it has more than one reference to it, it WONT be copied because it is only necessary to mutate the reference. <br>
+Copy-on-write is not a default behavior of value types, is implemented just for Arrays and Collections.
+```
+import Foundation
+
+func print(address: o: UnsafeRawPointer {
+    print(String(format: "%p", Int(bitPattern: o)))
+}
+
+var array1: [Int] = [0, 1, 2, 3]
+var array2 = array1
+
+print(address: array1)
+print(address: array2)
+
+array2.append(4)
+
+print(address: array2)
+
+//Output
+//0x600000078de0 array1 address
+//0x600000078de0 array2 address before mutation
+//0x6000000aa100 array2 address after mutation
+```
 
 ## Collections
 Multiple items into a single unit. The data stored in a Swift collection must be of the same type
