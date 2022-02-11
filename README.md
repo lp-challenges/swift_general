@@ -1,3 +1,5 @@
+## Basics
+
 * Type_Safety:  we are required to define the types of the values we are going to store in a variable. We will get an error if we attempt to assign a value to a variable that is of the wrong type
 * Type_Inference: allows us to omit the variable type when the variable is defined with an initial value. The compiler will infer the type based on that initial value. 
 * Tuples: group multiple values into a single compound type. These values are not required to be of the same type.
@@ -46,6 +48,11 @@ With optionals, Swift is able to detect problems such as this at compile time an
 If we expect a variable or object to always contain a value prior to using it, we will declare the variable as a non-optional.
 * **Optional binding**: to find out whether an optional contains a value, and if so, to make that value available as temporary. Can be used with if and while statements to check and extract some value.
 * **Optional chaining**: is a process for querying and calling properties, methods, and subscripts that could be nil. If the optional contains a value,the call succeeds; if the optional is nil, the call returns nil. Multiple queries can be chained together, the entire chain fails if any link in the chain is nil.
+
+## @objc
+Some functiolaties of the iOS environment are implemented only in objective-c. <br>
+You will need to use this Attribute when you want to call some functionality that is available only in the Objective-c library. <br>
+Examples: UIBarButtonItem and Timer.
 
 ## Copy on write
 To talk about copy on write we need to understand the value semantic (copy a STRUCT when we pass the value). <br>
