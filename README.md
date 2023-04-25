@@ -59,7 +59,9 @@ Examples: UIBarButtonItem and Timer.
 To talk about copy on write we need to understand the value semantic (copy a STRUCT when we pass the value). <br>
 When you have large value type and have to assign or pass a parameter to a function copying it can be really expensive.<br>
 Trying to minimize this issue, swift implements this set of mechanisms for some value types like an Array, where the value will be copied only on mutation. If the it has more than one reference to it, it WONT be copied because it is only necessary to mutate the reference. <br>
-Copy-on-write is not a default behavior of value types, is implemented just for Arrays and Collections.
+Copy-on-write is not a default behavior of value types, is implemented just for Arrays and Collections. <br>
+
+Swift provides three primary collection types, known as arrays, sets, and dictionaries, for storing collections of values. Arrays are ordered collections of values. Sets are unordered collections of unique values. Dictionaries are unordered collections of key-value associations.
 ```
 import Foundation
 
