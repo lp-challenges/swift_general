@@ -112,7 +112,7 @@ func reverse(first: inout String, second: inout String) {
 second = tmp }
 ```
 
-## Access controls
+## Access control
 Access controls enable us to hide implementation details and expose the interfaces. We can assign specific access levels to properties, methods, and initializers 
 * Open: Accessible from any import. Can be inherited and overridden out of the module.
 * Public: Accessible from any import. Can be inherited and overridden **ONLY INSIDE** the module.
