@@ -1,6 +1,6 @@
 ## Basics
 
-* The languages are compiled or interpreted. Swift is a compiled language, it means before the output, Swift will perform some activities. These activities are generally performed by Swift compiler. Interpreted languages will run without a compiling program into machine instructions, imstead read and executed by other program.
+* The languages are compiled or interpreted. Swift is a compiled language, it means before the output, Swift will perform some activities. These activities are generally performed by Swift compiler. Interpreted languages will run without a compiling program into machine instructions, imstead read and executed by other program. Compiled languages can offer a safe environment alerting us about issues in a compile time, preveting errors on runtime. Otherwise the the interpreted languages will offer less burocratic environment.
 * Type_Safety:  we are required to define the types of the values we are going to store in a variable. We will get an error if we attempt to assign a value to a variable that is of the wrong type
 * Type_Inference: allows us to omit the variable type when the variable is defined with an initial value. The compiler will infer the type based on that initial value. 
 * Tuples: group multiple values into a single compound type. These values are not required to be of the same type.
