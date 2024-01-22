@@ -87,6 +87,90 @@ print(address: array2)
 Created the array1 and assigned to array2, because of the copy-on-write, both values will point to the same address on memory, it will NOT be a copy. <br>
 The array2 will only be a copy when we mutate it.
 
+Manual implementations: 
+```
+final class HtmlMutableString: NSObject, NSMutableCopying {
+/// Please do not modify this class.
+    static var mutationsCount = 0
+
+    private(set) var data: String = ""
+    override var description: String {
+        return data
+    }
+
+    override init() {
+        super.init()
+    }
+
+    init(string: String) {
+        super.init()
+        data = string
+    }
+
+    func append(_ val: HtmlMutableString) {
+        data.append(val.data)
+    }
+
+    func mutableCopy(with zone: NSZone? = nil) -> Any {
+        HtmlMutableString.mutationsCount += 1
+        return HtmlMutableString(string: data)
+    }
+
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? HtmlMutableString else { return false }
+        return data == object.data
+    }
+}
+
+struct HtmlString: CustomDebugStringConvertible, ExpressibleByStringLiteral, Equatable {
+
+    private var _data: HtmlMutableString 
+    private let queue = DispatchQueue(label: "MyQueue", attributes: .concurrent)
+    var data: HtmlMutableString {
+        get {
+                queue.sync {
+                    return _data
+                }
+        }
+
+        set {
+            if isKnownUniquelyReferenced(&self._data) {
+                self._data = newValue
+            } else {
+                self._data = HtmlMutableString(string: newValue.description)
+            }
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            data.description
+        }
+    }
+
+    public init(stringLiteral value: String) {
+        let newData = HtmlMutableString(string: value)
+        self._data = newData   
+    }
+
+    init(_ data: HtmlMutableString) {
+        self._data = data
+    }
+
+    mutating func append(_ param: HtmlMutableString) {
+        queue.sync {
+            let newData = HtmlMutableString(string: self.data.description)
+            newData.append(param)
+            self._data = newData
+        }
+    }
+
+    static func == (lhs: HtmlString, rhs: HtmlString) -> Bool {
+        return lhs.data.description == rhs.data.description
+    }
+}
+```
+
 ## Collections
 Multiple items into a single unit. The data stored in a Swift collection must be of the same type
 * Arrays: store data in an ordered collection
